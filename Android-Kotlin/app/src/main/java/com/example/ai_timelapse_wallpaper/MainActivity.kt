@@ -20,12 +20,18 @@ class MainActivity : AppCompatActivity() {
 
         wallpaperManager = WallpaperManager.getInstance(applicationContext)
 
-        clearWallPaper.setOnClickListener {
+        btn_ClearWallPaper.setOnClickListener {
             wallpaperManager.clearWallpaper()
 
         }
-        selectWallPaper.setOnClickListener {
+
+        btn_SelectWallPaper.setOnClickListener {
             openGallery()
+        }
+
+        btn_StartBackground.setOnClickListener {
+            val serviceIntent : Intent = Intent(applicationContext, MyService::class.java)
+            startService(serviceIntent)
         }
     }
 
