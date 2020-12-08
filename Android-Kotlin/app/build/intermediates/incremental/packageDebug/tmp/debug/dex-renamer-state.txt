@@ -1,0 +1,7 @@
+#Thu Nov 19 19:54:38 KST 2020
+base.0=C\:\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\dex\\debug\\mergeExtDexDebug\\classes.dex
+path.1=classes.dex
+renamed.1=classes2.dex
+path.0=classes.dex
+renamed.0=classes.dex
+base.1=C\:\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\dex\\debug\\mergeProjectDexDebug\\classes.dex

@@ -23,6 +23,7 @@ class MyService : Service() {
     }
 
     override fun onStartCommand(intent: Intent, flags: Int, startId: Int): Int {
+        
         Notifi_M =
             getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val handler = myServiceHandler()
