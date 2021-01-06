@@ -51,7 +51,12 @@ class MainActivity : AppCompatActivity() {
             mediaPlayer.start()
         }
 
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+
+        startService(Intent(applicationContext, MyServiceTest::class.java))
     }
 
     private fun openGallery() {
