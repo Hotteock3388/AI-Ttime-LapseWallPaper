@@ -4,10 +4,12 @@ import android.app.Activity
 import android.app.WallpaperManager
 import android.content.Intent
 import android.graphics.Bitmap
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import androidx.appcompat.app.AppCompatActivity
+import com.example.ai_timelapse_wallpaper.service.MyServiceTest
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.IOException
 
@@ -33,6 +35,23 @@ class MainActivity : AppCompatActivity() {
             val serviceIntent : Intent = Intent(applicationContext, MyService::class.java)
             startService(serviceIntent)
         }
+
+
+        button_StartService.setOnClickListener {
+            startService(Intent(applicationContext, MyServiceTest::class.java))
+        }
+
+        button_StopService.setOnClickListener {
+            stopService(Intent(applicationContext, MyServiceTest::class.java))
+        }
+
+        button_StartMP3.setOnClickListener {
+            var mediaPlayer = MediaPlayer()
+            mediaPlayer = MediaPlayer.create(applicationContext, R.raw.sad)
+            mediaPlayer.start()
+        }
+
+
     }
 
     private fun openGallery() {
