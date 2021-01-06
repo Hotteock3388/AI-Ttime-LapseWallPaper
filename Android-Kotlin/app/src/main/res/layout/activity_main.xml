@@ -28,4 +28,25 @@
         android:layout_marginVertical="10dp"
         android:text="백그라운드 시작"/>
 
+    <Button
+        android:id="@+id/button_StartService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="Service 시작" />
+
+    <Button
+        android:id="@+id/button_StopService"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="Service 중지" />
+
+    <Button
+        android:id="@+id/button_StartMP3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="10dp"
+        android:text="노래 시작" />
+
 </LinearLayout>
