@@ -152,6 +152,9 @@ hs_err_pid*
 *~
 *.swp
 
+/.bin
+/.lock
+/.json
 # Keystore files
 *.jks
 *.keystore
@@ -226,6 +229,8 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+
+
 
 ### AndroidStudio Patch ###
 

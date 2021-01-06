@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt-rPT\\values-pt-rPT.xml",
+            "outputFile": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-pt-rPT\\values-pt-rPT.xml",
             "map": [
                 {
                     "source": "C:\\Users\\s1904\\.gradle\\caches\\transforms-2\\files-2.1\\032e24418dc3433ce45e6fc5d71ee226\\appcompat-1.2.0\\res\\values-pt-rPT\\values-pt-rPT.xml",
