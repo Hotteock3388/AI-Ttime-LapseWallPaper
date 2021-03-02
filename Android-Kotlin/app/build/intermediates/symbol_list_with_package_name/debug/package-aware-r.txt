@@ -23,6 +23,13 @@ anim btn_radio_to_off_mtrl_ring_outer_path_animation
 anim btn_radio_to_on_mtrl_dot_group_animation
 anim btn_radio_to_on_mtrl_ring_outer_animation
 anim btn_radio_to_on_mtrl_ring_outer_path_animation
+anim fragment_close_enter
+anim fragment_close_exit
+anim fragment_fade_enter
+anim fragment_fade_exit
+anim fragment_fast_out_extra_slow_in
+anim fragment_open_enter
+anim fragment_open_exit
 attr actionBarDivider
 attr actionBarItemBackground
 attr actionBarPopupTheme
@@ -906,11 +913,7 @@ id bottom
 id bounce
 id btn_ClearWallPaper
 id btn_SelectWallPaper
-id btn_StartBackground
 id buttonPanel
-id button_StartMP3
-id button_StartService
-id button_StopService
 id cache_measures
 id center
 id center_vertical
@@ -952,6 +955,7 @@ id expand_activities_button
 id expanded_menu
 id flip
 id forever
+id fragment_container_view_tag
 id gone
 id graph
 id graph_wrap
@@ -967,6 +971,12 @@ id ifRoom
 id ignore
 id ignoreRequest
 id image
+id image_1
+id image_2
+id image_3
+id image_4
+id image_5
+id image_6
 id info
 id invisible
 id italic
@@ -1076,6 +1086,7 @@ id uniform
 id up
 id useLogo
 id visible
+id visible_removing_fragment_view_tag
 id withText
 id wrap
 id wrap_content
@@ -1541,6 +1552,8 @@ styleable CustomAttribute attributeName customBoolean customColorDrawableValue c
 styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color drawableSize gapBetweenBars spinBars thickness
 styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery
 styleable FontFamilyFont android_font android_fontWeight android_fontStyle android_ttcIndex android_fontVariationSettings font fontStyle fontVariationSettings fontWeight ttcIndex
+styleable Fragment android_name android_id android_tag
+styleable FragmentContainerView android_name android_tag
 styleable GradientColor android_startColor android_endColor android_type android_centerX android_centerY android_gradientRadius android_tileMode android_centerColor android_startX android_startY android_endX android_endY
 styleable GradientColorItem android_color android_offset
 styleable ImageFilterView altSrc brightness contrast crossfade overlay round roundPercent saturation warmth

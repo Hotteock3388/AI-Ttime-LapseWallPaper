@@ -28,12 +28,12 @@
         "source": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\src\\main\\res\\drawable-v24\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
-    },
-    {
         "merged": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_f.png.flat",
         "source": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\src\\main\\res\\drawable-v24\\f.png"
+    },
+    {
+        "merged": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_k.png.flat",
@@ -56,12 +56,12 @@
         "source": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\src\\main\\res\\drawable-v24\\o.png"
     },
     {
-        "merged": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
-        "source": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\src\\main\\res\\layout\\activity_main.xml"
-    },
-    {
         "merged": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_c.png.flat",
         "source": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\src\\main\\res\\drawable-v24\\c.png"
+    },
+    {
+        "merged": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_main.xml.flat",
+        "source": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
         "merged": "D:\\Study\\Projects\\Android\\AI-Ttime-LapseWallPaper\\Android-Kotlin\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
