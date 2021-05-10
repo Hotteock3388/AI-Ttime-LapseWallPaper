@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        imageViewArr = arrayListOf(image_1, image_2,image_3,image_4,image_5,image_6)
+
         mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         wallpaperManager = WallpaperManager.getInstance(applicationContext)
