@@ -9,25 +9,43 @@
             type="com.example.ai_timelapse_wallpaper.activity.MainActivity" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@drawable/ic_back"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/btn_ClearWallPaper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:text="배경화면 초기화" />
 
-        <Button
-            android:id="@+id/btn_SelectWallPaper"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:text="배경화면 설정" />
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="70dp"
+            android:layout_height="35dp"
+            android:layout_margin="15dp"
+            android:text="Time"
+            android:textColor="#000000"
+            android:textSize="24dp"
+            android:shadowRadius="10.0"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowColor="#000000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="31dp"
+            android:layout_marginStart="4dp"
+            android:text="Lapse"
+            android:textSize="24dp"
+            android:shadowRadius="10.0"
+            android:shadowDx="5.0"
+            android:shadowDy="5.0"
+            android:shadowColor="#000000"
+            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

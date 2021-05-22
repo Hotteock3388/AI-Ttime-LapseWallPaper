@@ -10,12 +10,15 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.activity.MainActivity
+import com.example.ai_timelapse_wallpaper.data.local.SharedPref
+import java.lang.Thread.sleep
 
 class ChangeWallPaperService : Service() {
 
     private lateinit var mReceiver: CustomReceiver
     private val CHANNEL_ID = "Time-Lapse"
     private val FOREGROUND_ID = 333888
+    private lateinit var sharedPref: SharedPref
     override fun onBind(intent: Intent?): IBinder? {
         return null
     }
@@ -23,6 +26,7 @@ class ChangeWallPaperService : Service() {
     override fun onCreate() {
         super.onCreate()
         mReceiver = CustomReceiver()
+        sharedPref = SharedPref(applicationContext)
         val filter = IntentFilter(Intent.ACTION_SCREEN_OFF)
         registerReceiver(mReceiver, filter)
     }
@@ -30,19 +34,28 @@ class ChangeWallPaperService : Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
         //repeatLog()
-        if (intent != null) {
-            if (intent.action == null) {
-                if (mReceiver == null) {
-                    mReceiver = CustomReceiver()
-                    val filter = IntentFilter(Intent.ACTION_SCREEN_OFF)
-                    registerReceiver(mReceiver, filter)
+
+        rotateWallPaper()
+
+        startForegroundService()
+        return START_STICKY
+    }
+
+    private fun rotateWallPaper(){
+        var i = 0
+        val wallpaperManager = WallpaperManager.getInstance(applicationContext)
+        val thread = Thread(Runnable{
+            while (true){
+                if(sharedPref.isExist("ImageBitmap1")){
+                    //wallpaperManager.setBitmap(sharedPref.getImageArr(applicationContext)[++i %6])
+                    wallpaperManager.setBitmap(sharedPref.getImage(applicationContext,++i %6))
+                    Log.d("TestLog_Service", "Change")
+                    sleep(2000)
                 }
             }
-        }
-        startForegroundService()
+        })
+        thread.start()
 
-
-        return START_STICKY
     }
 
     private fun repeatLog() {
