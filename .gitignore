@@ -2,6 +2,10 @@
 # Created by https://www.toptal.com/developers/gitignore/api/kotlin,androidstudio,android
 # Edit at https://www.toptal.com/developers/gitignore?templates=kotlin,androidstudio,android
 
+.lock
+.ser
+.properties
+
 ### Android ###
 # Built application files
 *.apk
