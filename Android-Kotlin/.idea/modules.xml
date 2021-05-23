@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/AI-TimeLapse-WallPaper.iml" filepath="$PROJECT_DIR$/.idea/modules/AI-TimeLapse-WallPaper.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AI-TimeLapse-WallPaper.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AI-TimeLapse-WallPaper.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Android-Kotlin.AI-TimeLapse-WallPaper.iml" filepath="$PROJECT_DIR$/.idea/modules/Android-Kotlin.AI-TimeLapse-WallPaper.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Android-Kotlin.AI-TimeLapse-WallPaper.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Android-Kotlin.AI-TimeLapse-WallPaper.app.iml" />
     </modules>
   </component>
