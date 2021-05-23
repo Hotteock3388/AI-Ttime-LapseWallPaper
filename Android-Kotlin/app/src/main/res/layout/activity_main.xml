@@ -6,7 +6,7 @@
     <data>
         <variable
             name="activity"
-            type="com.example.ai_timelapse_wallpaper.activity.MainActivity" />
+            type="com.example.ai_timelapse_wallpaper.ui.main.MainActivity" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
