@@ -9,7 +9,7 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.ai_timelapse_wallpaper.R
-import com.example.ai_timelapse_wallpaper.activity.MainActivity
+import com.example.ai_timelapse_wallpaper.ui.main.MainActivity
 import com.example.ai_timelapse_wallpaper.data.local.SharedPref
 import java.lang.Thread.sleep
 
