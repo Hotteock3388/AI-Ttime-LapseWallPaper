@@ -33,6 +33,8 @@ class SharedPref(val context: Context) {
 
     fun isExist(key: String): Boolean = getPref(context).contains(key)
 
+    fun isExistImageArr(): Boolean = getPref(context).contains("ImageBitmap1")
+
     private fun getPref(context: Context): SharedPreferences =
         context.getSharedPreferences("pref", Context.MODE_PRIVATE)
 
