@@ -16,29 +16,49 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var viewModel: MainViewModel
 
-    private lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
 
 //    private lateinit var binding: AcBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Binding 초기화
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
+        //ViewModel 초기화
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+
+        //ViewPager Adapter 초기화
+        val adapter = MAdapter(viewModel.getDummyList(baseContext))
 
         with(binding){
             lifecycleOwner = this@MainActivity
             activity = this@MainActivity
             vm = viewModel
+            binding.viewPagerMainActivity.adapter = adapter
         }
-        val adapter = MAdapter(viewModel.getDummyList(baseContext))
-        viewPager_MainActivity.adapter = adapter
+
         adapter.notifyDataSetChanged()
+
 
     }
 
     fun imageSetting(){
         startActivity(Intent(this, SettingActivity::class.java))
     }
+
+    fun viewPagerPrevPage(){
+        if(binding.viewPagerMainActivity.currentItem != 0){
+            binding.viewPagerMainActivity.currentItem--
+        }
+    }
+
+    fun viewPagerNextPage(){
+        if(binding.viewPagerMainActivity.currentItem != viewModel.getDummyList(baseContext).size - 1){
+            binding.viewPagerMainActivity.currentItem++
+        }
+    }
+
+
 }
