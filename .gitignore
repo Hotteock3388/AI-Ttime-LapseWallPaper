@@ -7,7 +7,7 @@
 *.bin
 *.lock
 *.ser
-.idea
+.idea/
 *.gradlew
 
 ### Android ###
