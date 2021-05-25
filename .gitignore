@@ -246,3 +246,12 @@ fabric.properties
 !/gradle/wrapper/gradle-wrapper.jar
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,androidstudio,android
+Android-Kotlin/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_3_1_aar.xml
+Android-Kotlin/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_3_1_aar.xml
+Android-Kotlin/.idea/libraries/Gradle__androidx_activity_activity_1_2_3_aar.xml
+Android-Kotlin/.idea/libraries/Gradle__androidx_viewpager2_viewpager2_1_0_0_aar.xml
+Android-Kotlin/.idea/libraries/Gradle__androidx_versionedparcelable_versionedparcelable_1_1_1_aar.xml
+Android-Kotlin/.idea/libraries/Gradle__androidx_savedstate_savedstate_1_1_0_aar.xml
+Android-Kotlin/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_savedstate_2_3_1_aar.xml
+Android-Kotlin/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_viewmodel_2_3_1_aar.xml
+Android-Kotlin/.idea/libraries/Gradle__androidx_lifecycle_lifecycle_livedata_core_2_3_1_aar.xml
