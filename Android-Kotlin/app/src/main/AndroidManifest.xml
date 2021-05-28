@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.setting.SettingActivity"></activity>
+        <activity android:name=".ui.setting.SettingActivity" />
         <activity android:name=".ui.apply.ApplyActivity" />
         <activity android:name=".ui.loading.LoadingActivity" />
         <activity
