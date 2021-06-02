@@ -16,7 +16,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/ic_back"
+        android:background="@drawable/back"
         android:orientation="vertical">
 
         <TextView
@@ -100,6 +100,7 @@
             android:layout_height="80dp"
             android:layout_margin="15dp"
             android:src="@drawable/ic_fab"
+            android:foreground="@drawable/fab_click_effect_circle"
             android:onClick="@{() -> activity.imageSetting()}"
             app:layout_constraintBottom_toTopOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"

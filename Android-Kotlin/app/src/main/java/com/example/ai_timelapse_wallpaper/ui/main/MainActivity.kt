@@ -24,8 +24,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        removeTitleAction()
-
         //Binding 초기화
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
@@ -60,17 +58,6 @@ class MainActivity : AppCompatActivity() {
         if(binding.viewPagerMainActivity.currentItem != viewModel.getDummyList(baseContext).size - 1){
             binding.viewPagerMainActivity.currentItem++
         }
-    }
-
-    private fun removeTitleAction(){
-        // hide actionBar
-        val actionBar = supportActionBar
-        actionBar?.hide()
-
-        //hide titleBar(fullScreen)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN)
     }
 
 }
