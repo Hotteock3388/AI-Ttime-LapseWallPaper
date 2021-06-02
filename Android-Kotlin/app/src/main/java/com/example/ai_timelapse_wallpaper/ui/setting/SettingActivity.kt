@@ -6,13 +6,11 @@ import android.provider.MediaStore
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.databinding.ActivitySettingBinding
 import com.example.ai_timelapse_wallpaper.ui.loading.LoadingActivity
-import com.example.ai_timelapse_wallpaper.ui.splash.SplashActivity
 import kotlinx.android.synthetic.main.layout_button.view.*
 import kotlinx.android.synthetic.main.layout_viewpager_item.*
 

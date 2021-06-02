@@ -1,17 +1,10 @@
 package com.example.ai_timelapse_wallpaper.ui.setting
 
 import android.content.Context
-import android.content.Intent
 import android.graphics.drawable.Drawable
-import android.provider.MediaStore
-import android.widget.LinearLayout
-import android.widget.Toast
-import androidx.core.app.ActivityCompat.startActivityForResult
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModel
 import com.example.ai_timelapse_wallpaper.R
-import com.example.ai_timelapse_wallpaper.databinding.ActivitySettingBinding
-import kotlinx.android.synthetic.main.layout_button.view.*
 
 class SettingViewModel: ViewModel() {
 

@@ -1,6 +1,6 @@
 package com.example.ai_timelapse_wallpaper.util
 
-import android.content.Context
+import a    ndroid.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
