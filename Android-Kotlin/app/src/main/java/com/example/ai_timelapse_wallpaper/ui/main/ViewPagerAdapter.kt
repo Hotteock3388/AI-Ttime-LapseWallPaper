@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ai_timelapse_wallpaper.R
+import kotlinx.android.synthetic.main.layout_recyclerview_item.view.*
 import kotlinx.android.synthetic.main.layout_viewpager_item.view.*
 
 class MAdapter(private val dataList: ArrayList<Drawable>): RecyclerView.Adapter<MAdapter.ViewHolder>() {
