@@ -1,17 +1,18 @@
 package com.example.ai_timelapse_wallpaper.ui.main
 
-import android.graphics.drawable.Drawable
+import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.ai_timelapse_wallpaper.R
+import com.example.ai_timelapse_wallpaper.data.local.Singleton
 import kotlinx.android.synthetic.main.layout_viewpager_item.view.*
 
-class MAdapter(private val dataList: ArrayList<Drawable>): RecyclerView.Adapter<MAdapter.ViewHolder>() {
+class MAdapter(private val dataList: ArrayList<Uri>): RecyclerView.Adapter<MAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
-        return dataList.size
+        return Singleton.imageUriArr.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -20,13 +21,13 @@ class MAdapter(private val dataList: ArrayList<Drawable>): RecyclerView.Adapter<
     }
 
     override fun onBindViewHolder(holder: ViewHolder, itemPosition: Int) {
-        holder.bindItemStatusListItems(dataList[itemPosition])
+        holder.bindItemStatusListItems(Singleton.imageUriArr[itemPosition])
     }
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        fun bindItemStatusListItems(data: Drawable){
-            itemView.imageView_ViewPagerItem.setImageDrawable(data)
+        fun bindItemStatusListItems(data: Uri){
+            itemView.imageView_ViewPagerItem.setImageURI(data)
         }
     }
 }

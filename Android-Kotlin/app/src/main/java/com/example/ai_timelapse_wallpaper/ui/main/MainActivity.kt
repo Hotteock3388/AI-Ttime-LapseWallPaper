@@ -17,6 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
+
 //    private lateinit var binding: AcBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,20 +30,21 @@ class MainActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
         //ViewPager Adapter 초기화
-        val adapter = MAdapter(viewModel.getDummyList(baseContext))
+        viewModel.adapter = MAdapter(viewModel.getUriImageList())
 
         with(binding){
             lifecycleOwner = this@MainActivity
             activity = this@MainActivity
             vm = viewModel
-            binding.viewPagerMainActivity.adapter = adapter
+            binding.viewPagerMainActivity.adapter = viewModel.adapter
         }
 
-        adapter.notifyDataSetChanged()
+        viewModel.adapter.notifyDataSetChanged()
 
     }
 
     fun imageSetting(){
+        viewModel.adapter.notifyDataSetChanged()
         startActivity(Intent(this, SettingActivity::class.java))
     }
 
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun viewPagerNextPage(){
-        if(binding.viewPagerMainActivity.currentItem != viewModel.getDummyList(baseContext).size - 1){
+        if(binding.viewPagerMainActivity.currentItem != viewModel.getUriImageList().size - 1){
             binding.viewPagerMainActivity.currentItem++
         }
     }
