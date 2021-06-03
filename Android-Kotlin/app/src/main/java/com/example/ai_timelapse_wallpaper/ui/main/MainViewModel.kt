@@ -10,8 +10,8 @@ import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.data.local.Singleton
 
 class MainViewModel: ViewModel() {
-    //val imageArrs = ArrayList<Uri>()
 
+    lateinit var adapter: MAdapter
 
     fun getDummyList(context: Context): ArrayList<Drawable> {
         val arr = ArrayList<Drawable>()
