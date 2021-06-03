@@ -6,7 +6,7 @@ import android.net.Uri
 
 
 object Singleton {
-    val imageUriArr = ArrayList<Uri>()
+    var imageUriArr = ArrayList<Uri>()
 
     var imageBitmapArr = ArrayList<Bitmap>()
 }
