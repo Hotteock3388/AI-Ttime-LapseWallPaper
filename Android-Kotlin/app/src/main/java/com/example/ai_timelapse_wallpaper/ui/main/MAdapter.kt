@@ -1,6 +1,6 @@
 package com.example.ai_timelapse_wallpaper.ui.main
 
-import android.graphics.drawable.Drawable
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ai_timelapse_wallpaper.R
 import kotlinx.android.synthetic.main.layout_viewpager_item.view.*
 
-class MAdapter(private val dataList: ArrayList<Drawable>): RecyclerView.Adapter<MAdapter.ViewHolder>() {
+class MAdapter(private val dataList: ArrayList<Bitmap>): RecyclerView.Adapter<MAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return dataList.size
@@ -25,8 +25,8 @@ class MAdapter(private val dataList: ArrayList<Drawable>): RecyclerView.Adapter<
 
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
-        fun bindItemStatusListItems(data: Drawable){
-            itemView.imageView_ViewPagerItem.setImageDrawable(data)
+        fun bindItemStatusListItems(data: Bitmap){
+            itemView.imageView_ViewPagerItem.setImageBitmap(data)
         }
     }
 }

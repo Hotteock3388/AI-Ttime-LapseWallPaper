@@ -1,6 +1,7 @@
 package com.example.ai_timelapse_wallpaper.ui.setting
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.LinearLayout
@@ -9,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.ai_timelapse_wallpaper.R
+import com.example.ai_timelapse_wallpaper.data.local.Singleton
 import com.example.ai_timelapse_wallpaper.databinding.ActivitySettingBinding
 import com.example.ai_timelapse_wallpaper.ui.loading.LoadingActivity
+import io.reactivex.Single
 import kotlinx.android.synthetic.main.layout_button.view.*
 import kotlinx.android.synthetic.main.layout_viewpager_item.*
 
@@ -102,8 +105,22 @@ class SettingActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == PICTURE_REQUEST_CODE && resultCode == RESULT_OK){
+            getImages(data)
             startActivity(Intent(this, LoadingActivity::class.java))
         }
 
+    }
+
+    private fun getImages(data: Intent?){
+        //val imageUri : Uri? = data?.data
+
+        val clipData = data?.clipData
+
+        var arr = ArrayList<Uri>()
+        for (i in 0 until Singleton.IMG_ARR_SIZE){
+            arr.add(clipData!!.getItemAt(i).uri)
+        }
+
+        Singleton.imageUriArr = arr
     }
 }

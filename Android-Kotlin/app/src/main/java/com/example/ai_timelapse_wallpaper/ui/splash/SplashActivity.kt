@@ -18,25 +18,16 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        removeTitleAction()
-
         viewModel = ViewModelProvider(this).get(SplashViewModel::class.java)
 
         viewModel.getImageDataFromSharedPref(baseContext)
 
-        startActivity(Intent(this, MainActivity::class.java))
-
+        startApplication()
     }
 
-    private fun removeTitleAction(){
-        // hide actionBar
-        val actionBar = supportActionBar
-        actionBar?.hide()
-
-        //hide titleBar(fullScreen)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    private fun startApplication(){
+        finish()
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
 }
