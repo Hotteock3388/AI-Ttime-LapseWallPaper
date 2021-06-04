@@ -1,19 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-=======
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
->>>>>>> d449546624101167cbc86dd210f43f3edce5322b
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    android:background="@drawable/ic_splash"
-=======
+    android:background="@drawable/splash_back"
     style="@style/SplashTheme"
->>>>>>> d449546624101167cbc86dd210f43f3edce5322b
-    tools:context=".activity.SplashActivity">
+    tools:context=".ui.splash.SplashActivity">
 
 </androidx.constraintlayout.widget.ConstraintLayout>

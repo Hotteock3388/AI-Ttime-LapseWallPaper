@@ -11,6 +11,7 @@ import androidx.core.app.NotificationCompat
 import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.ui.main.MainActivity
 import com.example.ai_timelapse_wallpaper.data.local.SharedPref
+import com.example.ai_timelapse_wallpaper.data.local.Singleton
 import java.lang.Thread.sleep
 
 class ChangeWallPaperService : Service() {
@@ -48,7 +49,7 @@ class ChangeWallPaperService : Service() {
             while (true){
                 if(sharedPref.isExist("ImageBitmap1")){
                     //wallpaperManager.setBitmap(sharedPref.getImageArr(applicationContext)[++i %6])
-                    wallpaperManager.setBitmap(sharedPref.getImage(applicationContext,++i %6))
+                    wallpaperManager.setBitmap(sharedPref.getImage(applicationContext,++i % Singleton.IMG_ARR_SIZE ))
                     Log.d("TestLog_Service", "Change")
                     sleep(2000)
                 }

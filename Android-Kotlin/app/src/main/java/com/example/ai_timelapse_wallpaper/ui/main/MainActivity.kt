@@ -1,98 +1,73 @@
 package com.example.ai_timelapse_wallpaper.ui.main
 
-import android.app.Activity
-import android.app.ActivityManager
-import android.app.WallpaperManager
-import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
-import android.util.Log
-import android.view.WindowManager
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import com.example.ai_timelapse_wallpaper.R
-import com.example.ai_timelapse_wallpaper.data.local.SharedPref
-import com.example.ai_timelapse_wallpaper.service.ChangeWallPaperService
+import com.example.ai_timelapse_wallpaper.databinding.ActivityMainBinding
+import com.example.ai_timelapse_wallpaper.ui.setting.SettingActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
 
-    val PICTURE_REQUEST_CODE = 2141
+    private lateinit var viewModel: MainViewModel
+    
+    lateinit var binding: ActivityMainBinding
 
-    private lateinit var wallpaperManager : WallpaperManager
-
-    private lateinit var mainViewModel: MainViewModel
-//    private lateinit var binding: AcBinding
+    private var backKeyPressedTime : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        //DataBinding 초기화
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        wallpaperManager = WallpaperManager.getInstance(applicationContext)
+        //ViewModel 초기화
+        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
 
-        removeTitleAction()
-        if(!this.isServiceRunning(ChangeWallPaperService::class.java)){
-            startForegroundService(Intent(applicationContext, ChangeWallPaperService::class.java))
+        //ViewPager Adapter 초기화
+        viewModel.adapter = MAdapter(viewModel.getBitmapImageList())
+
+        with(binding){
+            lifecycleOwner = this@MainActivity
+            activity = this@MainActivity
+            vm = viewModel
+            binding.viewPagerMainActivity.adapter = viewModel.adapter
         }
 
-        window.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED or WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD)
+        viewModel.adapter.notifyDataSetChanged()
     }
 
-    fun removeTitleAction(){
-        // hide actionBar
-        val actionBar = supportActionBar
-        actionBar?.hide()
-
-        //hide titleBar(fullScreen)
-        window.setFlags(
-            WindowManager.LayoutParams.FLAG_FULLSCREEN,
-            WindowManager.LayoutParams.FLAG_FULLSCREEN)
+    fun imageSetting(){
+        viewModel.adapter.notifyDataSetChanged()
+        startActivity(Intent(this, SettingActivity::class.java))
     }
 
-
-    //서비스가 이미 실행중인지 확인
-    fun Context.isServiceRunning(serviceClass: Class<*>): Boolean {
-        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-
-        for (service in activityManager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.name == service.service.className) {
-                Log.d("isServiceRunning", "Service is running")
-                return true
-            }
+    fun viewPagerPrevPage(){
+        if(binding.viewPagerMainActivity.currentItem != 0){
+            binding.viewPagerMainActivity.currentItem--
         }
-        return false
     }
 
-    private fun openGallery() {
-        // 암시적 인텐트로 갤러리 열기
-        val intent = Intent(Intent.ACTION_PICK)
-        intent.type = MediaStore.Images.Media.CONTENT_TYPE
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true)
-
-        //Intent.createChooser 어디에서 사진을 고를건지 선택하게 해줌(갤러리, 포토, 클라우드)
-        startActivityForResult(Intent.createChooser(intent, "배경화면 선택"), PICTURE_REQUEST_CODE)
+    fun viewPagerNextPage(){
+        if(binding.viewPagerMainActivity.currentItem != viewModel.getUriImageList().size - 1){
+            binding.viewPagerMainActivity.currentItem++
+        }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if(resultCode == Activity.RESULT_OK && requestCode == PICTURE_REQUEST_CODE){
-            val imageUri : Uri? = data?.data
-
-            val clipData = data?.clipData
-            var i = 0
-
-            var arr = ArrayList<Uri>()
-            for (i in 0 until 6){
-                arr.add(clipData!!.getItemAt(i).uri)
-            }
-            SharedPref(applicationContext).saveImageArr(arr)
-
-            //val image : Bitmap = MediaStore.Images.Media.getBitmap(applicationContext.contentResolver, imageUri)
-
+    override fun onBackPressed() {
+        //1번 눌렀을 때
+        if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+            backKeyPressedTime = System.currentTimeMillis()
+            Toast.makeText(applicationContext, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT).show()
+        }
+        //2초 안에 2번 눌렀을 때 종료
+        else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+            finish()
         }
     }
 
