@@ -13,6 +13,7 @@ import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.data.local.Singleton
 import com.example.ai_timelapse_wallpaper.databinding.ActivitySettingBinding
 import com.example.ai_timelapse_wallpaper.ui.loading.LoadingActivity
+import io.reactivex.Single
 import kotlinx.android.synthetic.main.layout_button.view.*
 import kotlinx.android.synthetic.main.layout_viewpager_item.*
 
@@ -116,7 +117,7 @@ class SettingActivity : AppCompatActivity() {
         val clipData = data?.clipData
 
         var arr = ArrayList<Uri>()
-        for (i in 0 until 6){
+        for (i in 0 until Singleton.IMG_ARR_SIZE){
             arr.add(clipData!!.getItemAt(i).uri)
         }
 
