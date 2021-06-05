@@ -10,10 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import com.example.ai_timelapse_wallpaper.R
+import com.example.ai_timelapse_wallpaper.data.local.SharedPref
 import com.example.ai_timelapse_wallpaper.data.local.Singleton
 import com.example.ai_timelapse_wallpaper.databinding.ActivitySettingBinding
 import com.example.ai_timelapse_wallpaper.ui.loading.LoadingActivity
-import io.reactivex.Single
+import com.example.ai_timelapse_wallpaper.util.MyDummyRecyclerViewAdapter
 import kotlinx.android.synthetic.main.layout_button.view.*
 import kotlinx.android.synthetic.main.layout_viewpager_item.*
 
@@ -31,7 +32,7 @@ class SettingActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(SettingViewModel::class.java)
 
-        viewModel.adapter = SettingRecyclerViewAdapter(viewModel.getDummyList(applicationContext))
+        viewModel.adapter = MyDummyRecyclerViewAdapter(viewModel.getDummyList(applicationContext))
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_setting)
 
@@ -122,5 +123,6 @@ class SettingActivity : AppCompatActivity() {
         }
 
         Singleton.imageUriArr = arr
+        SharedPref(this).saveImageArr(arr)
     }
 }

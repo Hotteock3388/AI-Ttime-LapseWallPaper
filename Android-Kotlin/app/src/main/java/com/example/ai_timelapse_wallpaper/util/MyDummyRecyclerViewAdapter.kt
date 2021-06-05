@@ -1,4 +1,4 @@
-package com.example.ai_timelapse_wallpaper.ui.setting
+package com.example.ai_timelapse_wallpaper.util
 
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.ai_timelapse_wallpaper.R
 
-class SettingRecyclerViewAdapter(private val dataList: ArrayList<Drawable>): RecyclerView.Adapter<SettingRecyclerViewAdapter.ViewHolder>() {
+class MyDummyRecyclerViewAdapter(private val dataList: ArrayList<Drawable>): RecyclerView.Adapter<MyDummyRecyclerViewAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
         return dataList.size

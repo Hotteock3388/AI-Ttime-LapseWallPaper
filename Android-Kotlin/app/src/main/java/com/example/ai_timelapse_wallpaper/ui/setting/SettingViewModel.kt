@@ -5,10 +5,11 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.ViewModel
 import com.example.ai_timelapse_wallpaper.R
+import com.example.ai_timelapse_wallpaper.util.MyDummyRecyclerViewAdapter
 
 class SettingViewModel: ViewModel() {
 
-    lateinit var adapter : SettingRecyclerViewAdapter
+    lateinit var adapter : MyDummyRecyclerViewAdapter
 
     fun getDummyList(context: Context): ArrayList<Drawable> {
         val arr = ArrayList<Drawable>()

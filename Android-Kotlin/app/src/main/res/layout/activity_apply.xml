@@ -74,7 +74,7 @@
             android:id="@+id/button_MyGallery_ApplyActivity"
             style="@style/ApplyButton"
             android:text="Yes"
-            android:onClick="@{() -> activity.apply}"
+            android:onClick="@{() -> activity.apply()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.25"

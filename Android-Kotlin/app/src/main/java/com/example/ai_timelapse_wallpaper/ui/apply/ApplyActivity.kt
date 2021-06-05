@@ -9,6 +9,8 @@ import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.data.local.SharedPref
 import com.example.ai_timelapse_wallpaper.data.local.Singleton
 import com.example.ai_timelapse_wallpaper.databinding.ActivityApplyBinding
+import com.example.ai_timelapse_wallpaper.util.MyDummyRecyclerViewAdapter
+import com.example.ai_timelapse_wallpaper.util.MyRecyclerViewAdapter
 import io.reactivex.Single
 
 class ApplyActivity : AppCompatActivity() {
@@ -22,13 +24,16 @@ class ApplyActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this).get(ApplyViewModel::class.java)
 
+        viewModel.adapter = MyRecyclerViewAdapter(Singleton.imageBitmapArr)
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_apply)
 
         with(binding){
             activity = this@ApplyActivity
             vm = viewModel
             lifecycleOwner = this@ApplyActivity
-
+            recyclerViewApplyActivity.adapter = viewModel.adapter
+            viewModel.adapter.notifyDataSetChanged()
         }
 
     }
@@ -40,7 +45,6 @@ class ApplyActivity : AppCompatActivity() {
 
     fun cancel(){
         Toast.makeText(this, "취소!", Toast.LENGTH_SHORT).show()
-
     }
 
 }
