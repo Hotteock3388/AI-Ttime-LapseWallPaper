@@ -29,8 +29,4 @@ class MainViewModel: ViewModel() {
         return Singleton.imageBitmapArr
     }
 
-    fun getUriImageList(): ArrayList<Uri> {
-        return Singleton.imageUriArr
-    }
-
 }

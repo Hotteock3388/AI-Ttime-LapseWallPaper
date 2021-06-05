@@ -9,10 +9,20 @@ import com.example.ai_timelapse_wallpaper.util.MyUtil
 
 class SharedPref(val context: Context) {
 
-    fun saveImageArr(arr: ArrayList<Uri>){
-        return getPref(context).edit().let {
-            for(i in 0 until 6){
+    fun saveImageArrUriToBitmap(arr: ArrayList<Uri>){
+        getPref(context).edit().let {
+            for(i in 0 until Singleton.IMG_ARR_SIZE){
                 it.putString("ImageBitmap$i", MyUtil.bitmapToString(MyUtil.uriToBitmap(context, arr[i])!!))
+            }
+
+            it.apply()
+        }
+    }
+
+    fun saveBitmapImageArr(arr: ArrayList<Bitmap>){
+        getPref(context).edit().let {
+            for(i in 0 until Singleton.IMG_ARR_SIZE){
+                it.putString("ImageBitmap$i", MyUtil.bitmapToString(arr[i]))
             }
 
             it.apply()
@@ -21,7 +31,7 @@ class SharedPref(val context: Context) {
 
     fun getImageArr(context: Context): ArrayList<Bitmap>{
         var arr = ArrayList<Bitmap>()
-        for(i in 0 until 6){
+        for(i in 0 until Singleton.IMG_ARR_SIZE){
             arr.add(MyUtil.stringToBitmap(getPref(context).getString("ImageBitmap$i", ""))!!)
         }
         return arr

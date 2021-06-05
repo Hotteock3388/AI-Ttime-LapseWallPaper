@@ -12,7 +12,7 @@ import java.io.ByteArrayOutputStream
 object MyUtil {
 
     fun uriToBitmap(context: Context, imageFile: Uri): Bitmap? {
-        return  MediaStore.Images.Media.getBitmap(context.getContentResolver(), imageFile)
+        return MediaStore.Images.Media.getBitmap(context.getContentResolver(), imageFile)
     }
 
     fun stringToBitmap(encodedString: String?): Bitmap? {

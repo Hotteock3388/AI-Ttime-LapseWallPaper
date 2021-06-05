@@ -9,8 +9,6 @@ object Singleton {
 
     val IMG_ARR_SIZE = 6
 
-    var imageUriArr = ArrayList<Uri>()
-
     var imageBitmapArr = ArrayList<Bitmap>()
 
 }

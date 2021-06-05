@@ -9,9 +9,7 @@ import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.data.local.SharedPref
 import com.example.ai_timelapse_wallpaper.data.local.Singleton
 import com.example.ai_timelapse_wallpaper.databinding.ActivityApplyBinding
-import com.example.ai_timelapse_wallpaper.util.MyDummyRecyclerViewAdapter
 import com.example.ai_timelapse_wallpaper.util.MyRecyclerViewAdapter
-import io.reactivex.Single
 
 class ApplyActivity : AppCompatActivity() {
 
@@ -40,7 +38,7 @@ class ApplyActivity : AppCompatActivity() {
 
     fun apply(){
         Toast.makeText(this, "적용 완료!", Toast.LENGTH_SHORT).show()
-        SharedPref(this).saveImageArr(Singleton.imageUriArr)
+        SharedPref(this).saveBitmapImageArr(Singleton.imageBitmapArr)
     }
 
     fun cancel(){

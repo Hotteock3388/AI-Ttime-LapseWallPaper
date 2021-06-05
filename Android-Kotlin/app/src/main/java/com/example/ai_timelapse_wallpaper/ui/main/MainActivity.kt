@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun viewPagerNextPage(){
-        if(binding.viewPagerMainActivity.currentItem != viewModel.getUriImageList().size - 1){
+        if(binding.viewPagerMainActivity.currentItem != viewModel.getBitmapImageList().size - 1){
             binding.viewPagerMainActivity.currentItem++
         }
     }
