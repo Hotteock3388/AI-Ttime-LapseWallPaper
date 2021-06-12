@@ -16,9 +16,9 @@ TimeLapse는 **휴대전화의 배경화면에 시간의 변화를 입혀주는*
 
 
 ## 기능
-현재 적용중인 사진들 보기
-시간의 변화를 입힐 사진 선택(사용자 갤러리에서 OR 추천)
-변환된 이미지 적용 전 미리보기
+현재 적용중인 사진들 보기<br>
+시간의 변화를 입힐 사진 선택(사용자 갤러리에서 OR 추천)<br>
+변환된 이미지 적용 전 미리보기<br><br><br>
 
 
 
@@ -29,7 +29,7 @@ Kotlin을 사용한 Android 앱 개발을 담당했습니다.
 `Foreground Service`를 사용해 죽지 않는 서비스(`Immortal service`)를 구현했고, 
 
 `SharedPreferences`를 사용해 AI가 변환한 이미지를 저장, 일정 시간마다 `WallPaperManager`를 사용해 휴대전화의 배경화면을 `ArrayList`에 저장된 이미지로 변경하는 기능을 구현했습니다.
-
+<br><br><br>
 
 <img src="https://user-images.githubusercontent.com/57486593/121773446-f9c73300-cbb6-11eb-9384-cc029e9f387a.png" width="200"> <img src="https://user-images.githubusercontent.com/57486593/121773444-f8960600-cbb6-11eb-9ae1-20e9b012a715.png" width="200"> <img src="https://user-images.githubusercontent.com/57486593/121773441-f6cc4280-cbb6-11eb-8d00-49333eb0a4f3.png" width="200">
 <br>
