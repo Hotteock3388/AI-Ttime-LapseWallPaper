@@ -28,7 +28,7 @@ val activityModule = module {
     }
 
     viewModel {
-        ApplyViewModel()
+        ApplyViewModel(get())
     }
 
 }
