@@ -7,4 +7,6 @@ import androidx.lifecycle.MutableLiveData
 object Singleton {
 
     var imageArr = MutableLiveData<ArrayList<Bitmap>>()
+
+    var selectedImageArr = ArrayList<Bitmap>()
 }
