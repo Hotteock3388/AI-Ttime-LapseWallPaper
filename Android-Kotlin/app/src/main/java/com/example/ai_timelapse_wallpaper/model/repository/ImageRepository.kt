@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory
 import androidx.core.content.res.ResourcesCompat
 import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.model.local.SharedPref
+import com.example.ai_timelapse_wallpaper.model.local.Singleton
 import org.koin.core.KoinComponent
 
 class ImageRepository(private val context: Context) : KoinComponent {
@@ -28,6 +29,11 @@ class ImageRepository(private val context: Context) : KoinComponent {
 
     private fun getImageDataFromSharedPref() : ArrayList<Bitmap> {
         return sharedPref.getImageArr()
+    }
+
+    fun saveImageDataToSharedPref(arr: ArrayList<Bitmap>){
+        Singleton.imageArr.value = arr
+        sharedPref.saveBitmapImageArr(arr)
     }
 
     private fun createDummyData(): ArrayList<Bitmap> {
