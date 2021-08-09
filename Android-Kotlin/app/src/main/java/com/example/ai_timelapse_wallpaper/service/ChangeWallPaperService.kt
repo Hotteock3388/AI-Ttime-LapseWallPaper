@@ -9,9 +9,9 @@ import android.os.IBinder
 import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.example.ai_timelapse_wallpaper.R
-import com.example.ai_timelapse_wallpaper.ui.main.MainActivity
-import com.example.ai_timelapse_wallpaper.data.local.SharedPref
-import com.example.ai_timelapse_wallpaper.data.local.Singleton
+import com.example.ai_timelapse_wallpaper.view.main.MainActivity
+import com.example.ai_timelapse_wallpaper.model.local.SharedPref
+import com.example.ai_timelapse_wallpaper.model.local.Singleton
 import java.lang.Thread.sleep
 
 class ChangeWallPaperService : Service() {
@@ -26,9 +26,13 @@ class ChangeWallPaperService : Service() {
 
     override fun onCreate() {
         super.onCreate()
+
         mReceiver = CustomReceiver()
+
         sharedPref = SharedPref(applicationContext)
+
         val filter = IntentFilter(Intent.ACTION_SCREEN_OFF)
+
         registerReceiver(mReceiver, filter)
     }
 
@@ -49,24 +53,16 @@ class ChangeWallPaperService : Service() {
             while (true){
                 if(sharedPref.isExist("ImageBitmap1")){
                     //wallpaperManager.setBitmap(sharedPref.getImageArr(applicationContext)[++i %6])
-                    wallpaperManager.setBitmap(sharedPref.getImage(applicationContext,++i % Singleton.IMG_ARR_SIZE ))
+                    wallpaperManager.setBitmap(sharedPref.getImage(++i % Singleton.imageArr.value!!.size ))
                     Log.d("TestLog_Service", "Change")
-                    sleep(2000)
+
+                    //10분마다 배경화면 변경
+                    sleep(600000)
                 }
             }
         })
         thread.start()
 
-    }
-
-    private fun repeatLog() {
-        val t = Thread(Runnable {
-            for (i in 0 until 100000){
-                Thread.sleep(500)
-                Log.d("TestLog", "Timelapse $i")
-            }
-        })
-        t.start()
     }
 
     private fun startForegroundService(){

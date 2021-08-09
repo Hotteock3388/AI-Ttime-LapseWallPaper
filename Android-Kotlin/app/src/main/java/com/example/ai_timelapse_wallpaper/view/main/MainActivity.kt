@@ -1,49 +1,51 @@
-package com.example.ai_timelapse_wallpaper.ui.main
+package com.example.ai_timelapse_wallpaper.view.main
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
 import com.example.ai_timelapse_wallpaper.R
+import com.example.ai_timelapse_wallpaper.base.BaseActivity
 import com.example.ai_timelapse_wallpaper.databinding.ActivityMainBinding
-import com.example.ai_timelapse_wallpaper.ui.setting.SettingActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.example.ai_timelapse_wallpaper.model.local.Singleton
+import com.example.ai_timelapse_wallpaper.view.setting.SettingActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
 
-    private lateinit var viewModel: MainViewModel
-    
-    lateinit var binding: ActivityMainBinding
+    override val viewModel : MainViewModel by viewModel()
 
     private var backKeyPressedTime : Long = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        //DataBinding 초기화
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        Singleton.imageArr.observe(this, {
+            viewModel.adapter.notifyDataSetChanged()
+        })
 
-        //ViewModel 초기화
-        viewModel = ViewModelProviders.of(this).get(MainViewModel::class.java)
+        viewModel.imageSettingButtonCLick.observe(this, {
+            startActivity(Intent(this, SettingActivity::class.java))
 
-        //ViewPager Adapter 초기화
-        viewModel.adapter = MAdapter(viewModel.getBitmapImageList())
+        })
 
-        with(binding){
-            lifecycleOwner = this@MainActivity
-            activity = this@MainActivity
-            vm = viewModel
-            binding.viewPagerMainActivity.adapter = viewModel.adapter
+        binding.swipeRefreshLayout.let {
+            it.setOnRefreshListener {
+                viewModel.adapter.notifyDataSetChanged()
+                showToast("새로고침 완료!")
+                it.isRefreshing = false
+            }
         }
 
-        viewModel.adapter.notifyDataSetChanged()
+        //ViewPager Adapter 초기화
+
+        viewModel.adapter.also {
+            binding.viewPagerMainActivity.adapter = it
+        }.notifyDataSetChanged()
+
     }
 
     fun imageSetting(){
-        viewModel.adapter.notifyDataSetChanged()
         startActivity(Intent(this, SettingActivity::class.java))
     }
 
@@ -70,5 +72,4 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
     }
-
 }

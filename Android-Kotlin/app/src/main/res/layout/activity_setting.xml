@@ -7,23 +7,20 @@
 
     <data>
         <variable
-            name="activity"
-            type="com.example.ai_timelapse_wallpaper.ui.setting.SettingActivity" />
-        <variable
             name="vm"
-            type="com.example.ai_timelapse_wallpaper.ui.setting.SettingViewModel"/>
+            type="com.example.ai_timelapse_wallpaper.view.setting.SettingViewModel"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/back"
-        tools:context=".ui.setting.SettingActivity">
+        tools:context=".view.setting.SettingActivity">
 
         <ImageView style="@style/BackButton"
             android:id="@+id/imageView2"
             android:layout_margin="18dp"
-            android:onClick="@{() -> activity.finish()}"
+            android:onClick="@{() -> vm.finish()}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,6 +65,7 @@
 
         <include
             android:id="@+id/button_MyGallery_SettingActivity"
+            clickMyGallery="@{vm}"
             layout="@layout/layout_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -79,6 +77,7 @@
 
         <include layout="@layout/layout_button"
             android:id="@+id/button_Recommend_SettingActivity"
+            clickRecommend="@{vm}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
@@ -86,7 +85,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

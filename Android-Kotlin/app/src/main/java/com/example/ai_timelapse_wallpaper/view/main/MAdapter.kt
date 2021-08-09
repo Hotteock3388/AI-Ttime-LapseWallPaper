@@ -1,4 +1,4 @@
-package com.example.ai_timelapse_wallpaper.ui.main
+package com.example.ai_timelapse_wallpaper.view.main
 
 import android.graphics.Bitmap
 import android.view.LayoutInflater
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.ai_timelapse_wallpaper.R
 import kotlinx.android.synthetic.main.layout_viewpager_item.view.*
 
+//
 class MAdapter(private val dataList: ArrayList<Bitmap>): RecyclerView.Adapter<MAdapter.ViewHolder>() {
 
     override fun getItemCount(): Int {
