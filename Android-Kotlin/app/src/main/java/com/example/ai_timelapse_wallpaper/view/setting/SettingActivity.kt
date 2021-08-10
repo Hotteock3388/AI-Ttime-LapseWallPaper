@@ -5,7 +5,7 @@ import android.os.Bundle
 import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.base.BaseActivity
 import com.example.ai_timelapse_wallpaper.databinding.ActivitySettingBinding
-import com.example.ai_timelapse_wallpaper.view.loading.LoadingActivity
+import com.example.ai_timelapse_wallpaper.view.apply.ApplyActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingActivity : BaseActivity<ActivitySettingBinding, SettingViewModel>(R.layout.activity_setting) {
@@ -43,7 +43,7 @@ class SettingActivity : BaseActivity<ActivitySettingBinding, SettingViewModel>(R
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if(resultCode == RESULT_OK){
-            viewModel.saveImage(contentResolver ,data)
+            viewModel.saveSelectedImage(contentResolver ,data)
         }
     }
 
@@ -60,7 +60,9 @@ class SettingActivity : BaseActivity<ActivitySettingBinding, SettingViewModel>(R
 
     private fun startLoading(){
         finish()
-        startActivity(Intent(this, LoadingActivity::class.java))
+        //원래 서버 LoadingActivity에서 서버 통신 해야하지만 테스트 중이니 로딩 패스
+        //startActivity(Intent(this, LoadingActivity::class.java))
+        startActivity(Intent(this, ApplyActivity::class.java))
     }
 
 

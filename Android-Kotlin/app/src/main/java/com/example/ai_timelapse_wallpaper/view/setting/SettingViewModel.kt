@@ -54,7 +54,7 @@ class SettingViewModel: BaseViewModel() {
 
     }
 
-    fun saveImage(contentResolver: ContentResolver, data: Intent?){
+    fun saveSelectedImage(contentResolver: ContentResolver, data: Intent?){
         val bitmapArr = ArrayList<Bitmap>()
 
         data?.clipData.let {
@@ -63,7 +63,7 @@ class SettingViewModel: BaseViewModel() {
             }
         }
 
-        Singleton.imageArr.value = bitmapArr
+        Singleton.selectedImageArr = bitmapArr
 
         saveComplete.value = Unit
     }
