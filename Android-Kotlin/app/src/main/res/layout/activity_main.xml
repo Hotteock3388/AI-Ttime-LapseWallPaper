@@ -5,9 +5,6 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
-            name="activity"
-            type="com.example.ai_timelapse_wallpaper.view.main.MainActivity" />
-        <variable
             name="vm"
             type="com.example.ai_timelapse_wallpaper.view.main.MainViewModel"/>
     </data>
@@ -58,7 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_left"
-                android:onClick="@{() -> activity.viewPagerPrevPage()}"
+                android:onClick="@{() -> vm.vpPrevPage()}"
                 app:layout_constraintBottom_toBottomOf="@+id/viewPager_MainActivity"
                 app:layout_constraintEnd_toStartOf="@+id/viewPager_MainActivity"
                 app:layout_constraintStart_toStartOf="parent"
@@ -69,7 +66,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_right"
-                android:onClick="@{() -> activity.viewPagerNextPage()}"
+                android:onClick="@{() -> vm.vpNextPage()}"
                 app:layout_constraintBottom_toBottomOf="@+id/viewPager_MainActivity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/viewPager_MainActivity"
@@ -84,6 +81,7 @@
                 android:layout_marginBottom="17dp"
                 android:clipToPadding="false"
                 android:orientation="horizontal"
+                app:currentPosition="@{vm.vpPosition}"
                 app:layout_constraintBottom_toTopOf="@+id/fab_MainActivity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

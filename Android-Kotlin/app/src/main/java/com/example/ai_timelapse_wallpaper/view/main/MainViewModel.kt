@@ -9,14 +9,33 @@ class MainViewModel: BaseViewModel() {
 
     var adapter = MAdapter(Singleton.imageArr.value!!)
 
-    var imageSettingButtonCLick = MutableLiveData<Unit>()
+    var imageSettingButtonClick = MutableLiveData<Unit>()
+
+    var vpPosition = MutableLiveData<Int>()
+
+
+    init {
+        vpPosition.value = 0
+    }
 
     fun getBitmapImageList(): ArrayList<Bitmap> {
         return Singleton.imageArr.value!!
     }
 
     fun imageSetting(){
-        imageSettingButtonCLick.value = Unit
+        imageSettingButtonClick.value = Unit
+    }
+
+    fun vpPrevPage(){
+        if(vpPosition.value != 0){
+            vpPosition.postValue(vpPosition.value!! - 1)
+        }
+    }
+
+    fun vpNextPage(){
+        if(vpPosition.value != Singleton.imageArr.value?.size){
+            vpPosition.postValue(vpPosition.value!! + 1)
+        }
     }
 
 }

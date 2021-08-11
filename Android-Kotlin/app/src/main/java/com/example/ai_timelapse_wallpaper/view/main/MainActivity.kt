@@ -11,7 +11,7 @@ import com.example.ai_timelapse_wallpaper.view.setting.SettingActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
+class   MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
 
     override val viewModel : MainViewModel by viewModel()
 
@@ -20,45 +20,15 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.a
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Singleton.imageArr.observe(this, {
-            viewModel.adapter.notifyDataSetChanged()
-        })
-
-        viewModel.imageSettingButtonCLick.observe(this, {
+        viewModel.imageSettingButtonClick.observe(this, {
             startActivity(Intent(this, SettingActivity::class.java))
-
         })
-
-        binding.swipeRefreshLayout.let {
-            it.setOnRefreshListener {
-                viewModel.adapter.notifyDataSetChanged()
-                showToast("새로고침 완료!")
-                it.isRefreshing = false
-            }
-        }
 
         //ViewPager Adapter 초기화
-
         viewModel.adapter.also {
             binding.viewPagerMainActivity.adapter = it
         }.notifyDataSetChanged()
 
-    }
-
-    fun imageSetting(){
-        startActivity(Intent(this, SettingActivity::class.java))
-    }
-
-    fun viewPagerPrevPage(){
-        if(binding.viewPagerMainActivity.currentItem != 0){
-            binding.viewPagerMainActivity.currentItem--
-        }
-    }
-
-    fun viewPagerNextPage(){
-        if(binding.viewPagerMainActivity.currentItem != viewModel.getBitmapImageList().size - 1){
-            binding.viewPagerMainActivity.currentItem++
-        }
     }
 
     override fun onBackPressed() {

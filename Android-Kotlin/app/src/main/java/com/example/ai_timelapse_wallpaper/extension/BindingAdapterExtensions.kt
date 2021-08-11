@@ -5,11 +5,12 @@ import androidx.databinding.BindingAdapter
 import androidx.viewpager.widget.ViewPager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.ai_timelapse_wallpaper.model.local.Singleton
+import com.example.ai_timelapse_wallpaper.view.main.MainViewModel
 import com.example.ai_timelapse_wallpaper.view.setting.SettingViewModel
 import kotlinx.android.synthetic.main.layout_button.view.*
 
 
-@BindingAdapter("clickMyGallery")
+@BindingAdapter("app:clickMyGallery")
 fun myGallery(view: View, viewModel: SettingViewModel){
     view.textView_ButtonText_ButtonLayout.text = "My Gallery"
     view.setOnClickListener {
@@ -17,7 +18,7 @@ fun myGallery(view: View, viewModel: SettingViewModel){
     }
 }
 
-@BindingAdapter("clickRecommend")
+@BindingAdapter("app:clickRecommend")
 fun recommend(view: View, viewModel: SettingViewModel){
     view.textView_ButtonText_ButtonLayout.text = "Recommend"
     view.setOnClickListener {
@@ -25,13 +26,7 @@ fun recommend(view: View, viewModel: SettingViewModel){
     }
 }
 
-@BindingAdapter("ClickViewPagerButton")
-fun clickViewPagerButton(view: ViewPager2, direct: String){
-    if(direct == "Prev" && view.currentItem != 0){
-        view.currentItem.minus(1)
-    }
-    else if (direct == "Next" && view.currentItem != Singleton.imageArr.value?.size?.minus(1)){
-        view.currentItem.plus(1)
-    }
+@BindingAdapter("app:currentPosition")
+fun setCurrentPosition(view: ViewPager2, position: Int){
+    view.currentItem = position
 }
-
