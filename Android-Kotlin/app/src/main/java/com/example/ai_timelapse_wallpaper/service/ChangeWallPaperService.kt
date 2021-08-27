@@ -16,30 +16,24 @@ import java.lang.Thread.sleep
 
 class ChangeWallPaperService : Service() {
 
-    private lateinit var mReceiver: CustomReceiver
     private val CHANNEL_ID = "Time-Lapse"
     private val FOREGROUND_ID = 333888
     private lateinit var sharedPref: SharedPref
+
     override fun onBind(intent: Intent?): IBinder? {
         return null
     }
 
     override fun onCreate() {
         super.onCreate()
-
-        mReceiver = CustomReceiver()
-
         sharedPref = SharedPref(applicationContext)
-
-        val filter = IntentFilter(Intent.ACTION_SCREEN_OFF)
-
-        registerReceiver(mReceiver, filter)
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         super.onStartCommand(intent, flags, startId)
         //repeatLog()
 
+        Log.d("TestLog", "onStartCommand")
         rotateWallPaper()
 
         startForegroundService()
@@ -48,25 +42,32 @@ class ChangeWallPaperService : Service() {
 
     private fun rotateWallPaper(){
         var i = 0
-        val wallpaperManager = WallpaperManager.getInstance(applicationContext)
-        val thread = Thread(Runnable{
+
+        Thread(Runnable{
             while (true){
-                if(sharedPref.isExist("ImageBitmap1")){
+                if(sharedPref.isExist(sharedPref.getKey(i))){
                     //wallpaperManager.setBitmap(sharedPref.getImageArr(applicationContext)[++i %6])
-                    wallpaperManager.setBitmap(sharedPref.getImage(++i % Singleton.imageArr.value!!.size ))
-                    Log.d("TestLog_Service", "Change")
+                    WallpaperManager.getInstance(applicationContext).setBitmap(sharedPref.getImage(i++))
+
+                    //val wall = WallpaperManager.getInstance(applicationContext)
+                    //wall.setBitmap(sharedPref.getImage(i++), null, false, WallpaperManager.FLAG_SYSTEM)
+                    //wall.setBitmap(sharedPref.getImage(i++), null, false, WallpaperManager.FLAG_LOCK)
+                    Log.d("TimeLapse", "rotate!")
 
                     //10분마다 배경화면 변경
-                    sleep(600000)
+                    //Test 중 10초마다 변경
+                    sleep(10000)
+
+                }else {
+                    i = 0
                 }
             }
-        })
-        thread.start()
+        }).start()
 
     }
 
     private fun startForegroundService(){
-
+        showLog("tartForegroundService")
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
         builder.setSmallIcon(R.mipmap.ic_launcher)
         builder.setContentTitle("TimeLapse")
@@ -88,9 +89,6 @@ class ChangeWallPaperService : Service() {
 
     override fun onDestroy() {
         super.onDestroy()
-        if (mReceiver != null) {
-            unregisterReceiver(mReceiver)
-        }
     }
 
     //서비스가 이미 실행중인지 확인
@@ -99,11 +97,15 @@ class ChangeWallPaperService : Service() {
 
         for (service in activityManager.getRunningServices(Integer.MAX_VALUE)) {
             if (serviceClass.name == service.service.className) {
-                Log.d("isServiceRunning", "Service is running")
+                showLog("Service is already running")
                 return true
             }
         }
         return false
+    }
+
+    private fun showLog(msg: String){
+        Log.d("TimeLapse_TestLog", msg)
     }
 
 }

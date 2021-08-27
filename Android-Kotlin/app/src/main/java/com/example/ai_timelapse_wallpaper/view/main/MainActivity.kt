@@ -1,17 +1,22 @@
 package com.example.ai_timelapse_wallpaper.view.main
 
+import android.app.ActivityManager
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.base.BaseActivity
 import com.example.ai_timelapse_wallpaper.databinding.ActivityMainBinding
 import com.example.ai_timelapse_wallpaper.model.local.Singleton
+import com.example.ai_timelapse_wallpaper.service.ChangeWallPaperService
 import com.example.ai_timelapse_wallpaper.view.setting.SettingActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class   MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
+class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout.activity_main) {
 
     override val viewModel : MainViewModel by viewModel()
 
@@ -20,8 +25,16 @@ class   MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        MAdapter(Singleton.processedImageArr)
+
         viewModel.imageSettingButtonClick.observe(this, {
             startActivity(Intent(this, SettingActivity::class.java))
+        })
+
+        viewModel.startServiceCLick.observe(this, {
+            if(!baseContext.isServiceRunning(ChangeWallPaperService::class.java)){
+                ContextCompat.startForegroundService(this, Intent(this, ChangeWallPaperService::class.java))
+            }
         })
 
         //ViewPager Adapter 초기화
@@ -41,5 +54,17 @@ class   MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(R.layout
         else if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
             finish()
         }
+    }
+
+    fun Context.isServiceRunning(serviceClass: Class<*>): Boolean {
+        val activityManager = getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+
+        for (service in activityManager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.name == service.service.className) {
+                Log.d("isServiceRunning", "Service is running")
+                return true
+            }
+        }
+        return false
     }
 }

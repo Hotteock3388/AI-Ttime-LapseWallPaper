@@ -7,19 +7,22 @@ import com.example.ai_timelapse_wallpaper.model.local.Singleton
 
 class MainViewModel: BaseViewModel() {
 
+
+
     var adapter = MAdapter(Singleton.imageArr.value!!)
 
     var imageSettingButtonClick = MutableLiveData<Unit>()
 
     var vpPosition = MutableLiveData<Int>()
 
+    var startServiceCLick = MutableLiveData<Unit>()
 
     init {
         vpPosition.value = 0
     }
 
-    fun getBitmapImageList(): ArrayList<Bitmap> {
-        return Singleton.imageArr.value!!
+    fun startService(){
+        startServiceCLick.value = Unit
     }
 
     fun imageSetting(){

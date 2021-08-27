@@ -17,6 +17,7 @@ class CustomReceiver: BroadcastReceiver(){
     }
 
     private fun startService(context: Context){
+        Log.d("TestLog", "startService")
         startForegroundService(context, Intent(context, ChangeWallPaperService::class.java))
     }
 

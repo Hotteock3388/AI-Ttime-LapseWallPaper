@@ -26,6 +26,7 @@ class MyRecyclerViewAdapter(private val dataList: ArrayList<Bitmap>): RecyclerVi
         holder.bindItemStatusListItems(dataList[itemPosition])
     }
 
+
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         fun bindItemStatusListItems(data: Bitmap){
 

@@ -27,7 +27,9 @@ class MAdapter(private val dataList: ArrayList<Bitmap>): RecyclerView.Adapter<MA
     class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         fun bindItemStatusListItems(data: Bitmap){
+
             itemView.imageView_ViewPagerItem.setImageBitmap(data)
         }
     }
+
 }

@@ -9,11 +9,7 @@ import android.util.Base64
 import java.io.ByteArrayOutputStream
 
 
-object MyUtil {
-
-    fun uriToBitmap(context: Context, imageFile: Uri): Bitmap? {
-        return MediaStore.Images.Media.getBitmap(context.contentResolver, imageFile)
-    }
+class BitmapConverter {
 
     fun stringToBitmap(encodedString: String?): Bitmap? {
         return try {

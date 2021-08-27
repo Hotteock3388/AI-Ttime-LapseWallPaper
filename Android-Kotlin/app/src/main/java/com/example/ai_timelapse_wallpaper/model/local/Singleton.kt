@@ -9,4 +9,6 @@ object Singleton {
     var imageArr = MutableLiveData<ArrayList<Bitmap>>()
 
     var selectedImageArr = ArrayList<Bitmap>()
+
+    var processedImageArr = ArrayList<Bitmap>()
 }

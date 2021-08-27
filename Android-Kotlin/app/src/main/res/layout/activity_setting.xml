@@ -65,7 +65,7 @@
 
         <include
             android:id="@+id/button_MyGallery_SettingActivity"
-            clickMyGallery="@{vm}"
+            app:clickMyGallery="@{vm}"
             layout="@layout/layout_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,7 +77,7 @@
 
         <include layout="@layout/layout_button"
             android:id="@+id/button_Recommend_SettingActivity"
-            clickRecommend="@{vm}"
+            app:clickRecommend="@{vm}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"

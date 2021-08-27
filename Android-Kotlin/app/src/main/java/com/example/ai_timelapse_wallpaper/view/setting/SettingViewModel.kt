@@ -1,18 +1,12 @@
 package com.example.ai_timelapse_wallpaper.view.setting
 
 import android.content.ContentResolver
-import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
-import android.graphics.drawable.Drawable
 import android.provider.MediaStore
-import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.MutableLiveData
-import com.example.ai_timelapse_wallpaper.R
 import com.example.ai_timelapse_wallpaper.base.BaseViewModel
 import com.example.ai_timelapse_wallpaper.model.local.Singleton
-import com.example.ai_timelapse_wallpaper.util.MyDummyRecyclerViewAdapter
-import com.example.ai_timelapse_wallpaper.util.MyUtil
 import com.example.ai_timelapse_wallpaper.view.main.MAdapter
 
 class SettingViewModel: BaseViewModel() {
